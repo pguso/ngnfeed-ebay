@@ -1,5 +1,5 @@
 {
-    "name": "pgusp/ebay-trading",
+    "name": "pguso/ebay-trading",
     "type": "library",
     "description": "An object oriented implementation of Ebay Trading API",
     "keywords": ["ebay", "feed", "trading"],
