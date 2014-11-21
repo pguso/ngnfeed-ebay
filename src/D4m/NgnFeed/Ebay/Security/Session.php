@@ -171,18 +171,34 @@ class Session
         return $this->siteId;
     }
 
-
+    /**
+     * @param $apiCallName
+     * @param $parameters
+     * @param string $authType
+     * @param bool $parseResult
+     * @return \Guzzle\Http\Message\Response
+     */
     public function sendRequest($apiCallName, $parameters, $authType = self::AUTH_TOKEN, $parseResult = true)
     {
+        if($apiCallName['X-EBAY-API-CALL-NAME'] == 'GetSessionID' || $apiCallName['X-EBAY-API-CALL-NAME'] == 'FetchToken') {
+            $authType = 'IDVerification';
+        }
+
         $headers = $this->buildHeaders($parameters['headers']);
         $payload = $this->buildRequestBody($apiCallName, $parameters, $authType);
         $response = $this->send($headers, $payload);
+
         if($parseResult) {
             return $response;
         }
+
         return $response;
     }
 
+    /**
+     * @param $apiHeaders
+     * @return array
+     */
     protected function buildHeaders($apiHeaders)
     {
         $headers = [
@@ -203,6 +219,12 @@ class Session
         return $headers;
     }
 
+    /**
+     * @param $apiCallName
+     * @param $parameters
+     * @param $authType
+     * @return mixed
+     */
     protected function buildRequestBody($apiCallName, $parameters, $authType)
     {
         if ($authType == self::AUTH_TOKEN ) {

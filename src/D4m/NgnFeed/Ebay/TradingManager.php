@@ -4,6 +4,7 @@ namespace D4m\NgnFeed\Ebay;
 
 use D4m\NgnFeed\Ebay\Auth\CredentialsInterface;
 use D4m\NgnFeed\Ebay\Security\Session;
+use D4m\NgnFeed\Ebay\Service\ServiceFactory;
 
 class TradingManager implements Ebay
 {

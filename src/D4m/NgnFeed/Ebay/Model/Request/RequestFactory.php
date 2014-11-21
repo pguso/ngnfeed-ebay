@@ -12,6 +12,7 @@ class RequestFactory
     public function getRequest($apiCallName)
     {
         $requestName = $apiCallName.'Request';
+
         if($this->requestExists($requestName)) {
             $request = $this->getClass($requestName);
             return new $request();

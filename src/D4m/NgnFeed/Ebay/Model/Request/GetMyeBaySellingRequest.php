@@ -18,6 +18,7 @@ class GetMyeBaySellingRequest extends BaseRequest
     protected $deletedFromUnsoldList;
     protected $sellingSummary;
     protected $hideVariations;
+    protected $listingType;
 
     /**
      * @return mixed
@@ -33,6 +34,22 @@ class GetMyeBaySellingRequest extends BaseRequest
     public function setActiveList($activeList)
     {
         $this->activeList = $activeList;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getListingType()
+    {
+        return $this->listingType;
+    }
+
+    /**
+     * @param mixed $listingType
+     */
+    public function setListingType($listingType)
+    {
+        $this->listingType = $listingType;
     }
 
     /**
